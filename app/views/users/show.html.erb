@@ -1,0 +1,8 @@
+<h1><%= @user.first_name %></h1>
+<% @user.bookings.each do |booking| %>
+  <%= booking.start_time %>
+  <%= booking.end_time %>
+  <%= booking.trainer[:level] %>
+  <%= booking.trainer.user["first_name"] %>
+<% end %>
+

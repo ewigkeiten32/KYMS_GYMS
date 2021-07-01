@@ -12,8 +12,9 @@ class BookingsController < ApplicationController
     @trainer = Trainer.find(params[:trainer_id])
     @booking = Booking.new(bookings_params)
     @booking.trainer = @trainer
+    @booking.user = current_user
     @booking.save
-    redirect_to user_session_path
+    redirect_to user_path(current_user)
   end
 
   def show
