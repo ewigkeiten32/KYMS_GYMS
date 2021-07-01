@@ -1,0 +1,6 @@
+<h1>All Bookings</h1>
+<% Bookings.each do |booking| %>
+<%= Booking.start_time %>
+<% end %>
+<h2><%= link_to "Add New Booking", new_trainer_booking_path(@trainer), class: "btn btn-warning" %></h2>
+<hr>

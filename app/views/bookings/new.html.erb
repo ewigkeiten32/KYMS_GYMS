@@ -1,0 +1,6 @@
+<h1>Create a new booking!</h1>
+  <%= simple_form_for [@trainer, @booking] do |f| %>
+  <%= f.input :start_time %>
+  <%= f.input :end_time %>
+  <%= f.submit "Book your trainer!", class: "btn btn-primary" %>
+<% end %>
