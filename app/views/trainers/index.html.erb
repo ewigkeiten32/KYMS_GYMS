@@ -1,0 +1,7 @@
+<% @trainers.each do |trainer| %>
+  <li><%= trainer.level %></li>
+  <li><%= trainer.price %></li>
+<% end %>
+
+<%= link_to "Add trainer", new_trainer_path(@trainer),
+                           class: "btn btn-primary col-4"%>
