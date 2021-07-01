@@ -1,0 +1,8 @@
+<%= simple_form_for @trainer do |f| %>
+  <%= f.input :level,
+              collection: ["beginner", "intermediate", "advanced"]%>
+  <%= f.input :discipline,
+              collection: ['crossfit', 'boxing', 'weights'] %>
+  <%= f.input :price %>
+  <%= f.submit "submit", class: "btn btn-dark"  %>
+<% end %>
