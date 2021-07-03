@@ -1,11 +1,19 @@
-<div class="mx-auto col-md-6">
-<% @trainers.each do |trainer| %>
-  <h2><%= trainer.user.first_name%></h2>
-  <li><%= trainer.about_me %></li>
-  <li><%= trainer.level %></li>
-  <li><%= trainer.price %></li>
-  <li><%= trainer.discipline %></li>
-<% end %>
-</div>
-<%= link_to "Add trainer", new_trainer_path(@trainer),
-                           class: "btn btn-primary col-4"%>
+<div class="card mx-auto col-md-6">
+
+   <div class="card-horizontal">
+  <% @trainers.each do |trainer| %>
+      <div class="card-body">
+        <div class="card-header">
+          <h1 class="list-name"><%= link_to trainer.user.first_name, new_trainer_booking_path(trainer) %></h1>
+        </div>
+          <h4 class="card-title"><%= trainer.about_me %></h2>
+          <p class="card-text"><%= trainer.level %></p>
+          <h3 class="card-text"><%= trainer.price %></h3>
+          <p class="card-text"><%= trainer.discipline %></p>
+        </div>
+      <% end %>
+      <%= link_to "Become a Trainer", new_trainer_path(@user), class: "btn btn-primary col-4"%>
+<h2><%= link_to "Back to Home", root_path, class: "btn btn-dark" %></h2>
+    </div>
+
+
