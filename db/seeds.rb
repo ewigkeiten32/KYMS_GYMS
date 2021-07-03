@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'Faker'
+Booking.destroy_all
+Trainer.destroy_all
 User.destroy_all
 
 5.times do
@@ -30,3 +31,6 @@ end
     start_time: Date.today,
     end_time: Date.today + 3.hours,
     )
+puts "Created #{User.count} users"
+puts "Created #{Trainer.count} trainers"
+puts "Created #{Booking.count} bookings"
