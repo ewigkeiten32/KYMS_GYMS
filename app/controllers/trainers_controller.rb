@@ -31,6 +31,6 @@ class TrainersController < ApplicationController
   private
 
   def trainer_params
-    params.require(:trainer).permit(:level, :discipline, :price)
+    params.require(:trainer).permit(:level, :discipline, :price, :about_me)
   end
 end

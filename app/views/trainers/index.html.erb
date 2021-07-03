@@ -1,7 +1,11 @@
+<div class="mx-auto col-md-6">
 <% @trainers.each do |trainer| %>
+  <h2><%= trainer.user.first_name%></h2>
+  <li><%= trainer.about_me %></li>
   <li><%= trainer.level %></li>
   <li><%= trainer.price %></li>
+  <li><%= trainer.discipline %></li>
 <% end %>
-
+</div>
 <%= link_to "Add trainer", new_trainer_path(@trainer),
                            class: "btn btn-primary col-4"%>
