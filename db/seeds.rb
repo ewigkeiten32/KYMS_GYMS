@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+<<<<<<< HEAD
 require 'Faker'
 User.destroy_all
 
@@ -30,3 +31,5 @@ end
     start_time: Date.today,
     end_time: Date.today + 3.hours,
     )
+=======
+>>>>>>> 90a92867cf390faf4d870bc9fcae4fea0ed00f51
