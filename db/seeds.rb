@@ -13,9 +13,9 @@ User.destroy_all
     email:Faker::Internet.email,
     password: "password",
     first_name:Faker::FunnyName.name,
-    last_name:Faker::FunnyName.name)
+    last_name:Faker::FunnyName.name,
     about_me:Faker::Quote.famous_last_words
-
+    )
   trainer = Trainer.create!(
     user: user,
     about_me:Faker::Quote.famous_last_words,
