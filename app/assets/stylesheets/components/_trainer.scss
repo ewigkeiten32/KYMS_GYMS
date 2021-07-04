@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  // flex-direction:row;
+  flex-wrap: wrap;
+  grid-gap: 16px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 30%;
+  .card-info {
+  }
+  .card-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .user-image {
+      align-items: right;
+    }
+  }
+}
+
+.box {
+ margin: 0 auto;
+ align-item: space-between;
+}

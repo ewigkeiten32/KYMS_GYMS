@@ -1,18 +1,36 @@
-<div class="card mx-auto col-md-6">
+<div class= "box">
+  <h1 class= "text-center">Say Hi To Your Trainers!</h1>
+    <div class="container mx-auto">
+      <% @trainers.each do |trainer| %>
+        <div class="card">
+          <div class="card-body">
+<!--               class: "btn btn-dark ml-auto p1 btn-xs -->
+              <h1 class="card-title">
+                <%= link_to trainer.user.first_name, trainer_path(trainer) %>
+                <%= photo_for(trainer.user) %>
+              </h1>
+            <div class="card-info">
+            <p class="card-text">
+              <strong>About Me:</strong>
+              <%= trainer.about_me %>
+            </p>
+            <p class="card-text">
+              <strong>Level:</strong>
+              <%= trainer.level %>
+            </p>
+            <p class="card-text">
+              <strong>Discipline:</strong>
+              <%= trainer.discipline %>
+            </p>
+            <h3 class="card-text">
+              $<%= trainer.price %>
+            </h3>
+            <%= link_to "Book me", new_trainer_booking_path(trainer),
+                                  class: "btn btn-dark ml-auto p1 btn-xs" %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-   <div class="card-horizontal">
-  <% @trainers.each do |trainer| %>
-      <div class="card-body">
-        <div class="card-header">
-          <h1 class="list-name"><%= link_to trainer.user.first_name, new_trainer_booking_path(trainer) %></h1>
-        </div>
-        <%= photo_for(trainer.user) %>
-        <p class="card-title"><%= trainer.about_me %></p>
-        <p class="card-text"><%= trainer.level %></p>
-        <p class="card-text"><%= trainer.price %></p>
-        <p class="card-text"><%= trainer.discipline %></p>
-        </div>
-      <% end %>
-      <%= link_to "Become a Trainer", new_trainer_path(@user), class: "btn btn-primary col-4"%>
-<h2><%= link_to "Back to Home", root_path, class: "btn btn-dark" %></h2>
-    </div>
