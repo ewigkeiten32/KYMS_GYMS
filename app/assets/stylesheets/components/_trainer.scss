@@ -9,6 +9,16 @@
 
 .card {
   width: 30%;
+  .card-info {
+  }
+  .card-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .user-image {
+      align-items: right;
+    }
+  }
 }
 
 .box {
