@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  // flex-direction:row;
+  flex-wrap: wrap;
+  grid-gap: 16px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 30%;
+}
+
+.box {
+ margin: 0 auto;
+ align-item: space-between;
+}
