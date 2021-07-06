@@ -9,7 +9,7 @@ Booking.destroy_all
 Trainer.destroy_all
 User.destroy_all
 
-5.times do
+20.times do
   user = User.create!(
     email:Faker::Internet.email,
     password: "password",
