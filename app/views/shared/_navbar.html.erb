@@ -14,9 +14,11 @@
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
+          <% if current_user.trainer.nil? %>
         <li class="nav-item">
           <%= link_to "Become a Trainer", new_trainer_path, class: "nav-link" %>
         </li>
+        <% end %>
         <li class="nav-item dropdown">
           <%= navbar_photo(current_user) %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
