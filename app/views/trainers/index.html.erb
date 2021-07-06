@@ -2,13 +2,13 @@
   <h1 class= "text-center">Say Hi To Your Trainers!</h1>
     <div class="container mx-auto">
       <% @trainers.each do |trainer| %>
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
 <!--               class: "btn btn-dark ml-auto p1 btn-xs -->
-              <h1 class="card-title">
+              <h2 class="card-title">
                 <%= link_to trainer.user.first_name, trainer_path(trainer) %>
                 <%= photo_for(trainer.user) %>
-              </h1>
+              </h2>
             <div class="card-info">
             <p class="card-text">
               <strong>About Me:</strong>

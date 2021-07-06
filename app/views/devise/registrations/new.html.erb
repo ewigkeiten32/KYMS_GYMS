@@ -1,6 +1,6 @@
-<div class="mx-auto col-md-4">
+<div class="card-transparent border-dark mb-3 mx-auto col-md-4 py-3 shadow-sm rounded">
 
-<h2>Sign up</h2>
+<h2>YOUR JOURNEY STARTS HERE <i class="fas fa-running"></i></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -28,5 +28,5 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<!-- Removed erb render "devise/shared/links" -->
 </div>
