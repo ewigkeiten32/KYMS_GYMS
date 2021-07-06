@@ -1,15 +1,15 @@
 // Specific CSS for your home-page
 h1 {
-  justify-content: center;
+  text-align: center;
   color: white;
 }
 
 p {
-  justify-content: center;
+  text-align: center;
   color: white;
 }
 
-body {
-  background: url('/assets/Workingout.jpeg');
+div {
+  background: url(images/Workingout.jpeg.jpg) no-repeat center center fixed;
   background-size: cover;
 }
