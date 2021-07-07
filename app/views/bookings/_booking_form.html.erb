@@ -1,0 +1,19 @@
+<% if @booking.persisted? %>
+  <h1>Edit booking!</h1>
+<% else %>
+  <h1>Create a new booking!</h1>
+<% end %>
+
+  <%= simple_form_for [@trainer, @booking] do |f| %>
+  <%= f.input :start_time, as: :date,
+    start_year: Date.today.year,
+    order: [:day, :month, :year] %>
+  <%= f.input :end_time, as: :date,
+    start_year: Date.today.year,
+   order: [:day, :month, :year]%>
+   <% text = @booking.persisted? ? "Edit your booking!" : "Book your trainer!" %>
+  <%= f.submit "#{text}", class: "btn btn-primary" %>
+<% end %>
+<h2><%= link_to "Back to All Trainers", trainers_path, class: "btn btn-dark" %></h2>
+<h2><%= link_to "Back to Home", root_path, class: "btn btn-dark" %></h2>
+
