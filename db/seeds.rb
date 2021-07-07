@@ -5,11 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
+
 Booking.destroy_all
 Trainer.destroy_all
 User.destroy_all
 
 20.times do
+  file= URI.open('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')
+  # user= User.new()
   user = User.create!(
     email:Faker::Internet.email,
     password: "password",
@@ -17,6 +21,7 @@ User.destroy_all
     last_name:Faker::FunnyName.name,
     about_me:Faker::Quote.famous_last_words
     )
+    user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   trainer = Trainer.create!(
     user: user,
     about_me:Faker::Quote.famous_last_words,
