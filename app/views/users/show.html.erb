@@ -16,65 +16,47 @@
             <div class="bg-light p-4 d-flex justify-content-end text-center">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block"><%= @user.bookings.count %></h5><small class="text-muted"> <i class="fas fa-running mr-1"></i>Bookings</small>
+                        <h5 class="font-weight-bold mb-0 d-block"><%= @user.bookings.count %></h5>
+                        <small class="text-muted"> <i class="fas fa-running mr-1"></i>Bookings</small>
                     </li>
                     <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                        <h5 class="font-weight-bold mb-0 d-block"><%= @user.created_at.year %></h5>
+                        <small class="text-muted"> <i class="fas fa-user mr-1"></i>Joined</small>
                     </li>
                 </ul>
             </div>
-            <div class="px-4 py-3">
-                <h5 class="mb-0">About Me</h5>
+            <!-- About Me -->
+            <div class="px-4 py-3"><h5 class="mb-2">About Me</h5>
                 <div class="p-4 rounded shadow-sm bg-light">
                     <p class="font-italic mb-0"> "<%= @user.about_me %>"</p>
                 </div>
             </div>
+                <!-- My Bookings -->
             <div class="px-4 py-3">
-                <h5 class="mb-0">My Bookings</h5>
-                  <% @user.bookings.each do |booking| %>
+                <h5 class="mb-2">My Bookings</h5>
+                <%= link_to trainers_path, class: 'card-remove-link' do %>
+                      <i class="fas fa-plus-square"></i>
+                      <% end %>
+                    <% @user.bookings.each do |booking| %>
                     <ul style="list-style: none;">
-                      <div class="p-4 rounded shadow-sm bg-light">
-                        <li> <p class="font-weight-bold">Trainer: <%= booking.trainer.user[:first_name] %> <%= booking.trainer.user[:last_name] %></p> </li>
+                    <div class="p-4 rounded shadow-sm bg-light">
+                        <li> <p class="font-weight-bold">Trainer: <%= booking.trainer.user[:first_name] %>
+                            <%= booking.trainer.user[:last_name] %></p> </li>
                         <li> <p>Date: <%= booking.start_time %> </p></li>
                         <li> <p>Discipline: <%= booking.trainer[:discipline] %></p></li>
                         <li> <p>Trainer Level: <%= booking.trainer[:level] %></p></li>
                         <li> <p>Cost: $<%= booking.trainer[:price] %></p></li>
+                    <%= link_to trainers_path, method: :edit, data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
+                          <i class="fas fa-edit align-items-start"></i>
+                          <% end %>
                     </ul>
-                        <% end %>
-                      </div>
-            </div>
-            <!-- Buttons at the bottom -->
-            <%= link_to "Book Another Trainer", trainers_path, class: "btn btn-dark col-12"%>
-            <h2><%= link_to "Home", root_path, class: "btn btn-dark col-12" %></h2></p>
+                    <% end %>
+                    </div>
             </div>
 
-            <!-- Funky Profile image -->
-            <div class="col-md-12">
-                <div class="profile-card-6"><img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-6.jpg" class="img img-responsive">
-                    <div class="profile-name">JOHN
-                        <br>DOPE</div>
-                    <div class="profile-position"></div>
-                    <div class="profile-overview">
-                        <div class="profile-overview">
-                            <div class="row text-center">
-                                <div class="col-xs-4">
-                                    <h3></h3>
-                                    <p>Rank</p>
-                                </div>
-                                <div class="col-xs-4">
-                                    <h3>50</h3>
-                                    <p>Sessions</p>
-                                </div>
-                                <div class="col-xs-4">
-                                    <h3>35</h3>
-                                    <p>Likes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <!-- Buttons at the bottom -->
+            <h2><%= link_to "View My Trainer Profile", root_path, class: "btn btn-dark col-12" %></h2></p>
             </div>
-            </div>
-              </div>
-            </div>
+      </div>
 </div>
