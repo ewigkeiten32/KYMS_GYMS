@@ -20,6 +20,17 @@ class BookingsController < ApplicationController
   def show
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(bookings_params)
+
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def bookings_params

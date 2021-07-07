@@ -4,33 +4,72 @@
       <% @trainers.each do |trainer| %>
         <div class="card shadow-sm">
           <div class="card-body">
-<!--               class: "btn btn-dark ml-auto p1 btn-xs -->
+
               <h2 class="card-title">
                 <%= link_to trainer.user.first_name, trainer_path(trainer) %>
                 <%= photo_for(trainer.user) %>
               </h2>
+
             <div class="card-info">
-            <p class="card-text">
-              <strong>About Me:</strong>
-              <%= trainer.about_me %>
-            </p>
-            <p class="card-text">
-              <strong>Level:</strong>
-              <%= trainer.level %>
-            </p>
-            <p class="card-text">
-              <strong>Discipline:</strong>
-              <%= trainer.discipline %>
-            </p>
-            <h3 class="card-text">
-              $<%= trainer.price %>
-            </h3>
-            <%= link_to "Book me", new_trainer_booking_path(trainer),
-                                  class: "btn btn-dark ml-auto p1 btn-xs" %>
+
+              <p class="card-text">
+                <strong>About Me:</strong>
+                <%= trainer.about_me %>
+              </p>
+
+              <p class="card-text">
+                <strong>Level:</strong>
+                <%= trainer.level %>
+              </p>
+
+              <p class="card-text">
+                <strong>Discipline:</strong>
+                <%= trainer.discipline %>
+              </p>
+
+              <h3 class="card-text">
+                $<%= trainer.price %>
+              </h3>
+
+              <%= link_to "Book me", new_trainer_booking_path(trainer),
+                  class: "btn btn-dark ml-auto p1 btn-xs" %>
             </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<!--      <div class="col-md-4 text-center">
+        <div class="profile-card-3 shadow-sm">
+          <% @trainers.each do |trainer| %>
+          <%= photo_for(trainer.user)%>
+            <div class="profile-name">
+              <%= link_to trainer.user.first_name, trainer_path(trainer) %>
+            </div>
+              <div class="profile-position"></div>
+                <div class="profile-description">
+                    <p class="card-text">
+                    <strong>About Me:</strong>
+                      <%= trainer.about_me %>
+                    </p>
+              <div class="row">
+                <div class="col-xs-4">
+                  <h4><%= trainer.level %></h3>
+                    <p>Level</p>
+                </div>
+                <div class="col-xs-4">
+                    <h3><%= trainer.discipline %></h3>
+                    <p>Discipline</p>
+                </div>
+                <div class="col-xs-4">
+                    <h3>$<%= trainer.price %></h3>
+                    <p>Price</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </div>
+      </div>
+    </div> -->
 
