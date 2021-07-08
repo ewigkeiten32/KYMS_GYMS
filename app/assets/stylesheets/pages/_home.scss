@@ -2,9 +2,21 @@
 h1 {
   text-align: center;
   color: black;
+  font-family: 'Zen Tokyo Zoo', cursive;
+  font-size: 70px;
 }
 
 p {
   text-align: center;
   color: black;
+  font-size: 18px;
+}
+
+#bg {
+  background: url("https://imgix.bustle.com/uploads/shutterstock/2020/3/11/5db1bc6b-4d71-4000-951f-eb147257fc21-shutterstock-1667721061.jpg?w=2000&h=640&fit=crop&crop=faces&auto=format%2Ccompress");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }

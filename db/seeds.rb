@@ -19,7 +19,7 @@ User.destroy_all
     password: "password",
     first_name:Faker::FunnyName.name,
     last_name:Faker::FunnyName.name,
-    about_me:Faker::Quote.famous_last_words
+    about_me:Faker::Lorem.sentence
     )
     user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   trainer = Trainer.create!(
