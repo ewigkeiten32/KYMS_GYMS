@@ -11,8 +11,10 @@ Booking.destroy_all
 Trainer.destroy_all
 User.destroy_all
 
+num = 1
+
 20.times do
-  file= URI.open('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')
+  file= URI.open('https://thispersondoesnotexist.com/image')
   # user= User.new()
   user = User.create!(
     email:Faker::Internet.email,
@@ -21,7 +23,7 @@ User.destroy_all
     last_name:Faker::FunnyName.name,
     about_me:Faker::Lorem.sentence
     )
-    user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    user.photo.attach(io: file, filename: "photo#{num}", content_type: 'image/png')
   trainer = Trainer.create!(
     user: user,
     about_me:Faker::Quote.famous_last_words,
@@ -29,6 +31,7 @@ User.destroy_all
     level: ["beginner", "intermediate", "advanced"].sample,
     price: rand(20..100)
     )
+  num += 1
 end
   booking = Booking.create!(
     user_id: User.first.id,
