@@ -6,7 +6,7 @@
 
   <div class="media-body mb-5 text-white">
     <% if @booking.persisted? %>
-      <h1>Edit booking!</h1>
+      <h1 class="text-center"><i class="fas fa-running px-2 "></i>Edit booking!</h1>
     <% else %>
       <h1 class="text-center"><i class="fas fa-running px-2 "></i>Create a new booking!</h1>
       <% end %>
@@ -17,7 +17,8 @@
   <div class="px-4 py-3 bg-light font-weight-bold">
     <div id='trainer-booking-time' class="d-flex flex-column container" data-unavailable="<%= @trainer.unavailable_times.to_json %>">
       <% if current_user.id != @trainer.user_id  %>
-       <%= simple_form_for([@trainer, @booking]) do |f| %>
+      <% temp = params[:action] == "new" ? [@trainer, @booking] : [@booking] %>
+          <%= simple_form_for(temp) do |f| %>
            <%= f.input :start_time, as: :string, type: :text%>
            <%= f.input :end_time, as: :string, type: :text %>
            <%= f.submit "Book Your Trainer", class: "btn" %>
