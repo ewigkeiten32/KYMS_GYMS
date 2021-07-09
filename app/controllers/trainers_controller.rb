@@ -1,18 +1,20 @@
 class TrainersController < ApplicationController
 
   def index
-    @trainers = Trainer.all
+    @trainers = policy_scope(Trainer)
+    # @trainers = Trainer.all
   end
 
   def new
     @trainer = Trainer.new
+    authorize @trainer
   end
 
   def create
     @user = current_user
     @trainer = Trainer.new(trainer_params)
     @trainer.user = @user
-
+    authorize @trainer
     if @trainer.save
       redirect_to trainers_path(@trainer)
     else
@@ -23,6 +25,7 @@ class TrainersController < ApplicationController
 
   def show
     @trainer = Trainer.find(params[:id])
+    authorize @trainer
   end
 
 
