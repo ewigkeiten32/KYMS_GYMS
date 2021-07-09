@@ -1,0 +1,62 @@
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+        <!-- Profile -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3"><%= user_show_image(current_user) %>
+                         <a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0"><%= @user.first_name %></h4>
+                        <p class="small mb-4"> <i class="fas fa-envelope"></i> <%= @user.email %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block"><%= @user.bookings.count %></h5>
+                        <small class="text-muted"> <i class="fas fa-running mr-1"></i>Bookings</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block"><%= @user.created_at.year %></h5>
+                        <small class="text-muted"> <i class="fas fa-user mr-1"></i>Joined</small>
+                    </li>
+                </ul>
+            </div>
+            <!-- About Me -->
+            <div class="px-4 py-3"><h5 class="mb-2">About Me</h5>
+                <div class="p-4 rounded shadow-sm bg-light">
+                    <p class="font-italic mb-0"> "<%= @user.about_me %>"</p>
+                </div>
+            </div>
+                <!-- My Bookings -->
+            <div class="px-4 py-3">
+                <h5 class="mb-2">My Bookings</h5>
+                <%= link_to trainers_path, class: 'card-remove-link' do %>
+                      <i class="fas fa-plus-square"></i>
+                      <% end %>
+                    <% @user.bookings.each do |booking| %>
+                    <ul style="list-style: none;">
+                    <div class="p-4 rounded shadow-sm bg-light">
+                        <li> <p class="font-weight-bold">Trainer: <%= booking.trainer.user[:first_name] %>
+                            <%= booking.trainer.user[:last_name] %></p> </li>
+                        <li> <p>Date: <%= booking.start_time %> </p></li>
+                        <li> <p>Discipline: <%= booking.trainer[:discipline] %></p></li>
+                        <li> <p>Trainer Level: <%= booking.trainer[:level] %></p></li>
+                        <li> <p>Cost: $<%= booking.trainer[:price] %></p></li>
+                    <%= link_to trainers_path, method: :edit, data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
+                          <i class="fas fa-edit align-items-start"></i>
+                          <% end %>
+                    </ul>
+                    <% end %>
+                    </div>
+            </div>
+
+
+            <!-- Buttons at the bottom -->
+            <h2><%= link_to "View My Trainer Profile", root_path, class: "btn btn-dark col-12" %></h2></p>
+            </div>
+      </div>
+</div>

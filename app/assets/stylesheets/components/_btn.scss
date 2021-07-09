@@ -1,0 +1,37 @@
+.btn {
+  background-color:purple;
+  text-decoration:none;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  padding:9px 44px;
+  margin: 10px 0;
+
+  &:hover{
+    background-color:rgb(94, 33, 92);
+    transition: 0.2s;
+    color: white;
+  }
+}
+
+.xtrabtn {
+  background-color:#806CA5;
+  text-decoration:none;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  padding:9px 44px;
+  margin: 10px 0;
+
+
+  &:hover {
+    background-color:rgb(93, 72, 132);
+    transition: 0.2s;
+    text-decoration:none;
+    color: white;
+  }
+}
+
+.pw {
+  margin: 10px 0;
+}

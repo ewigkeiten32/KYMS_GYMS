@@ -1,0 +1,31 @@
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+      <div class="bg-white shadow rounded overflow-hidden">
+        <div class="px-4 pt-0 pb-4 cover">
+          <div class="media align-items-end profile-head">
+
+  <div class="media-body mb-5 text-white">
+    <% if @booking.persisted? %>
+      <h1 class="text-center"><i class="fas fa-running px-2 "></i>Edit booking!</h1>
+    <% else %>
+      <h1 class="text-center"><i class="fas fa-running px-2 "></i>Create a new booking!</h1>
+      <% end %>
+      <h3 class="medium mb-8 py-4 px-4 text-center"> No Pain No Gain </h3>
+  </div>
+</div>
+<div class="media-body mb-3 mt-3 text-dark">
+  <div class="px-4 py-3 bg-light font-weight-bold">
+    <div id='trainer-booking-time' class="d-flex flex-column container" data-unavailable="<%= @trainer.unavailable_times.to_json %>">
+      <% if current_user.id != @trainer.user_id  %>
+      <% temp = params[:action] == "new" ? [@trainer, @booking] : [@booking] %>
+          <%= simple_form_for(temp) do |f| %>
+           <%= f.input :start_time, as: :string, type: :text%>
+           <%= f.input :end_time, as: :string, type: :text %>
+           <%= f.submit "Book Your Trainer", class: "btn" %>
+        <% end %>
+      <% end %>
+
+<h2><%= link_to "Back to All Trainers", trainers_path, class: "btn" %></h2>
+  </div>
+</div>
+

@@ -1,0 +1,29 @@
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+      <div class="bg-white shadow rounded overflow-hidden">
+        <div class="px-4 pt-0 pb-4 cover">
+          <div class="media align-items-end profile-head">
+
+                              <div class="media-body mb-5 text-white">
+                                  <h2 class="mt-0 mb-0"><i class="fas fa-running px-2"></i>Become a Trainer of Kym's Gyms.</h2>
+                                  <p class="medium mb-8 py-4 px-4"> There's some pain to be gained.</p>
+                              </div>
+                          </div>
+        </div>
+        <div class="media-body mb-5 text-dark">
+            <div class="px-4 py-3 bg-light font-weight-bold">
+                <%= simple_form_for @trainer do |f| %>
+                  <%= f.input :level,
+                              collection: ["beginner", "intermediate", "advanced"]%>
+                  <%= f.input :discipline,
+                              collection: ['crossfit', 'boxing', 'weights'] %>
+                  <%= f.input :price %>
+                  <%= f.input :about_me %>
+                  <%= f.submit "Become a Trainer", class: "btn btn-dark"  %>
+                <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
