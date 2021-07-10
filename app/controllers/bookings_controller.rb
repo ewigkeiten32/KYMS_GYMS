@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_articles, only: [:show, :edit, :show, :destroy]
+
   def index
     @bookings = Booking.all
   end
@@ -31,6 +33,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(bookings_params)
+    authorize @booking
 
     redirect_to user_path(current_user)
   end
@@ -39,5 +42,9 @@ class BookingsController < ApplicationController
 
   def bookings_params
     params.require(:booking).permit(:start_time, :end_time)
+  end
+
+  def set_articles
+    @booking = Booking.find(params[:id])
   end
 end

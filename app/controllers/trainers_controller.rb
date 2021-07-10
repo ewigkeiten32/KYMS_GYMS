@@ -28,8 +28,12 @@ class TrainersController < ApplicationController
     authorize @trainer
   end
 
+ def destroy
+  @trainer = Trainer.find(params[:id])
+  @trainer.destroy
 
-
+  redirect_to user_path(current_user)
+ end
 
   private
 
