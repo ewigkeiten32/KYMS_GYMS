@@ -1,7 +1,10 @@
 class TrainersController < ApplicationController
-
   def index
-    @trainers = Trainer.all
+    if params[:query].present?
+      @trainers = Trainer.search_by_discipline_and_level(params[:query])
+    else
+      @trainers = Trainer.all
+    end
   end
 
   def new
