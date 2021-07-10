@@ -1,5 +1,22 @@
 // Specific CSS for your home-page
 h1 {
+<<<<<<< HEAD
+  color: white;
+  text-align: center;
+}
+
+p {
+  color: white;
+  text-align: center;
+}
+
+html {
+  background: url(images/workingout.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+=======
   text-align: center;
   color: black;
   font-family: 'Zen Tokyo Zoo', cursive;
@@ -19,4 +36,5 @@ p {
   background-size: cover;
   height: 100vh;
   width: 100vw;
+>>>>>>> f234c61185870317bcef8d798eb378b21e8490b3
 }
