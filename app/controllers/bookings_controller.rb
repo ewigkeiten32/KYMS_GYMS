@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   def new
     @trainer = Trainer.find(params[:trainer_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
@@ -14,6 +15,7 @@ class BookingsController < ApplicationController
     @booking.trainer = @trainer
     @booking.user = current_user
     @booking.save
+    authorize @booking
     redirect_to user_path(current_user)
   end
 
@@ -22,6 +24,8 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @trainer = Trainer.find(@booking.trainer_id)
+    authorize @booking
   end
 
   def update

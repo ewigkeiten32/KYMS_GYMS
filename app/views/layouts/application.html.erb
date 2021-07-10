@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render 'shared/flashes' %>
     <title>KYMSGyms</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= render 'shared/navbar' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-<!--     <p class="notice"><%= notice %></p> -->
+    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </head>
 
   <body>
+    <%= render 'shared/flashes' %>
+    <%= render 'shared/navbar' %>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>
