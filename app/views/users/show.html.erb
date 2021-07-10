@@ -69,7 +69,7 @@
                       <div class="d-flex justify-content-end">
                         <%= link_to edit_booking_path(booking.id), class: 'card-remove-link mr-4' do %>
                         <i class="fas fa-edit align-items-start"></i>                        <% end %>
-            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
+            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure you want to delete this booking?" }, class: 'card-remove-link' do %>
       <i class="fas fa-trash-alt "></i>
       <% end %>
                       </div>
@@ -104,7 +104,7 @@
                       <div class="d-flex justify-content-end">
                         <%= link_to edit_booking_path(booking.id), class: 'card-remove-link mr-4' do %>
                         <i class="fas fa-edit align-items-start"></i>                        <% end %>
-            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
+            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure you want to delete this booking?" }, class: 'card-remove-link' do %>
       <i class="fas fa-trash-alt "></i>
       <% end %>
                       </div>
