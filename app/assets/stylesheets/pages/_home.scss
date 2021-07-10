@@ -1,40 +1,48 @@
 // Specific CSS for your home-page
 h1 {
-<<<<<<< HEAD
   color: white;
   text-align: center;
 }
 
-p {
-  color: white;
+h1 {
+  color: black;
+  padding: 15px;
   text-align: center;
 }
 
-html {
-  background: url(images/workingout.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-=======
-  text-align: center;
+.title {
   color: black;
-  font-family: 'Zen Tokyo Zoo', cursive;
-  font-size: 70px;
+  padding-left: 11px;
+  font-size: 100px;
+  text-align: left;
+  font-weight: 800;
+}
+
+.tagline {
+  margin: 0 66% 10px 0%;
+  color: black;
+  font-weight: 600;
+  padding-left: 17px;
+  font-size: 20px;
+  backdrop-filter: blur(2px);
+}
+
+p {
+  color: black;
+  text-align: center;
 }
 
 p {
   text-align: center;
   color: black;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 #bg {
-  background: url("https://imgix.bustle.com/uploads/shutterstock/2020/3/11/5db1bc6b-4d71-4000-951f-eb147257fc21-shutterstock-1667721061.jpg?w=2000&h=640&fit=crop&crop=faces&auto=format%2Ccompress");
+  background: url("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2019%2F12%2FCLASSPASS1219-2000.jpg&q=85");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   width: 100vw;
->>>>>>> f234c61185870317bcef8d798eb378b21e8490b3
 }
