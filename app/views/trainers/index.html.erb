@@ -1,5 +1,6 @@
 <div class= "box">
   <h1 class= "text-center">Say Hi To Your Trainers!</h1>
+    <%= render "searchform" %>
     <div class="container mx-auto">
       <% @trainers.each do |trainer| %>
         <div class="card shadow-sm">
@@ -39,37 +40,4 @@
     <% end %>
   </div>
 </div>
-
-<!--      <div class="col-md-4 text-center">
-        <div class="profile-card-3 shadow-sm">
-          <% @trainers.each do |trainer| %>
-          <%= photo_for(trainer.user)%>
-            <div class="profile-name">
-              <%= link_to trainer.user.first_name, trainer_path(trainer) %>
-            </div>
-              <div class="profile-position"></div>
-                <div class="profile-description">
-                    <p class="card-text">
-                    <strong>About Me:</strong>
-                      <%= trainer.about_me %>
-                    </p>
-              <div class="row">
-                <div class="col-xs-4">
-                  <h4><%= trainer.level %></h3>
-                    <p>Level</p>
-                </div>
-                <div class="col-xs-4">
-                    <h3><%= trainer.discipline %></h3>
-                    <p>Discipline</p>
-                </div>
-                <div class="col-xs-4">
-                    <h3>$<%= trainer.price %></h3>
-                    <p>Price</p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-          </div>
-      </div>
-    </div> -->
 
