@@ -4,7 +4,11 @@
     <div class="bg-white shadow rounded overflow-hidden">
       <div class="px-4 pt-0 pb-4 cover">
         <div class="media align-items-end profile-head">
+          <% if current_user != @user %>
+            <div class="profile mr-3"><%= user_show_image(@user) %>
+              <% else %>
           <div class="profile mr-3"><%= user_show_image(current_user) %>
+          <% end %>
           </div>
           <div class="media-body mb-5 text-white">
             <h4 class="mt-0 mb-0"><%= @user.first_name %></h4>
@@ -13,7 +17,9 @@
         </div>
       </div>
       <div class="bg-light p-4 d-flex justify-content-between align-items-center text-center">
-        <a href="#" class="btn btn-outline-dark btn-sm">Add new booking</a>
+          <%= link_to trainers_path, class: 'card-remove-link' do %>
+            <i class="btn btn-outline-dark btn-sm">Add new booking</i>
+        <% end %>
         <ul class="list-inline mb-0">
           <li class="list-inline-item">
             <h5 class="font-weight-bold mb-0 d-block"><%= @user.bookings.count %></h5>
@@ -49,9 +55,7 @@
               <div class="px-4 py-3">
                 <div class="d-flex justify-content-start">
                   <h5 class="mb-2">My Bookings</h5>
-                    <%= link_to trainers_path, class: 'card-remove-link' do %>
-                    <i class="fas fa-plus-square px-2"></i>
-                    <% end %>
+
                 </div>
                 <% @user.bookings.each do |booking| %>
                 <div class="p-4 rounded shadow-sm bg-light">
@@ -63,9 +67,11 @@
                     <li> <p class="mb-2">Trainer Level: <%= booking.trainer[:level] %></p></li>
                     <li> <p class="mb-2">Cost: $<%= booking.trainer[:price] %></p></li>
                       <div class="d-flex justify-content-end">
-                        <%= link_to edit_booking_path(booking.id), data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
-                        <i class="fas fa-edit align-items-start"></i>
-                        <% end %>
+                        <%= link_to edit_booking_path(booking.id), class: 'card-remove-link mr-4' do %>
+                        <i class="fas fa-edit align-items-start"></i>                        <% end %>
+            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
+      <i class="fas fa-trash-alt "></i>
+      <% end %>
                       </div>
                   </ul>
                   </div>
@@ -85,6 +91,27 @@
                   Pay me $<%= @user.trainer.price %> and I'll teach you <%= @user.trainer.level %> <%= @user.trainer.discipline %>.
                 </p>
               </div>
+                <h5 class="mb-2">My Bookings</h5>
+                <% @user.trainer.bookings.each do |booking| %>
+                <div class="p-4 rounded shadow-sm bg-light">
+                  <ul class="pl-0" style="list-style: none;">
+                    <li> <p class="font-weight-bold mb-2">Trainer: <%= booking.user[:first_name] %>
+                        <%= booking.user[:last_name] %></p> </li>
+                    <li> <p class="mb-2">Date: <%= booking.start_time %> </p></li>
+                    <li> <p class="mb-2">Discipline: <%= booking.trainer[:discipline] %></p></li>
+                    <li> <p class="mb-2">Trainer Level: <%= booking.trainer[:level] %></p></li>
+                    <li> <p class="mb-2">Cost: $<%= booking.trainer[:price] %></p></li>
+                      <div class="d-flex justify-content-end">
+                        <%= link_to edit_booking_path(booking.id), class: 'card-remove-link mr-4' do %>
+                        <i class="fas fa-edit align-items-start"></i>                        <% end %>
+            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
+      <i class="fas fa-trash-alt "></i>
+      <% end %>
+                      </div>
+                  </ul>
+                  </div>
+                  <% end %>
+              </div>
             </div>
             <% end %>
           </div>
@@ -100,6 +127,7 @@
                   Pay me $<%= @user.trainer.price %> and I'll teach you <%= @user.trainer.level %> <%= @user.trainer.discipline %>.
                 </p>
               </div>
+
             </div>
             <% end %>
     </div>
