@@ -1,62 +1,108 @@
 <div class="row py-5 px-4">
-    <div class="col-md-5 mx-auto">
-        <!-- Profile -->
-        <div class="bg-white shadow rounded overflow-hidden">
-            <div class="px-4 pt-0 pb-4 cover">
-                <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><%= user_show_image(current_user) %>
-                         <a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
-                    </div>
-                    <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0"><%= @user.first_name %></h4>
-                        <p class="small mb-4"> <i class="fas fa-envelope"></i> <%= @user.email %></p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block"><%= @user.bookings.count %></h5>
-                        <small class="text-muted"> <i class="fas fa-running mr-1"></i>Bookings</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block"><%= @user.created_at.year %></h5>
-                        <small class="text-muted"> <i class="fas fa-user mr-1"></i>Joined</small>
-                    </li>
-                </ul>
-            </div>
-            <!-- About Me -->
-            <div class="px-4 py-3"><h5 class="mb-2">About Me</h5>
-                <div class="p-4 rounded shadow-sm bg-light">
-                    <p class="font-italic mb-0"> "<%= @user.about_me %>"</p>
-                </div>
-            </div>
-                <!-- My Bookings -->
-            <div class="px-4 py-3">
-                <h5 class="mb-2">My Bookings</h5>
-                <%= link_to trainers_path, class: 'card-remove-link' do %>
-                      <i class="fas fa-plus-square"></i>
-                      <% end %>
-                    <% @user.bookings.each do |booking| %>
-                    <ul style="list-style: none;">
-                    <div class="p-4 rounded shadow-sm bg-light">
-                        <li> <p class="font-weight-bold">Trainer: <%= booking.trainer.user[:first_name] %>
-                            <%= booking.trainer.user[:last_name] %></p> </li>
-                        <li> <p>Date: <%= booking.start_time %> </p></li>
-                        <li> <p>Discipline: <%= booking.trainer[:discipline] %></p></li>
-                        <li> <p>Trainer Level: <%= booking.trainer[:level] %></p></li>
-                        <li> <p>Cost: $<%= booking.trainer[:price] %></p></li>
-                    <%= link_to trainers_path, method: :edit, data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
-                          <i class="fas fa-edit align-items-start"></i>
-                          <% end %>
-                    </ul>
-                    <% end %>
-                    </div>
-            </div>
-
-
-            <!-- Buttons at the bottom -->
-            <h2><%= link_to "View My Trainer Profile", root_path, class: "btn btn-dark col-12" %></h2></p>
-            </div>
+  <div class="col-md-5 mx-auto">
+    <!-- Profile -->
+    <div class="bg-white shadow rounded overflow-hidden">
+      <div class="px-4 pt-0 pb-4 cover">
+        <div class="media align-items-end profile-head">
+          <div class="profile mr-3"><%= user_show_image(current_user) %>
+          </div>
+          <div class="media-body mb-5 text-white">
+            <h4 class="mt-0 mb-0"><%= @user.first_name %></h4>
+            <p class="small mb-4"> <i class="fas fa-envelope"></i> <%= @user.email %></p>
+          </div>
+        </div>
       </div>
+      <div class="bg-light p-4 d-flex justify-content-between align-items-center text-center">
+        <a href="#" class="btn btn-outline-dark btn-sm">Add new booking</a>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <h5 class="font-weight-bold mb-0 d-block"><%= @user.bookings.count %></h5>
+            <small class="text-muted"> <i class="fas fa-running mr-1"></i>Bookings</small>
+          </li>
+          <li class="list-inline-item">
+            <h5 class="font-weight-bold mb-0 d-block"><%= @user.created_at.year %></h5>
+            <small class="text-muted"> <i class="fas fa-user mr-1"></i>Joined</small>
+          </li>
+        </ul>
+      </div>
+      <!-- NAV TABS -->
+      <% if @user == current_user %>
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Member Profile</a>
+          <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Trainer Profile</a>
+        </div>
+      </nav>
+      </nav>
+      <div>
+        <div>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <!-- Member About Me -->
+              <div class="px-4 py-3"><h5 class="mb-2">About Me</h5>
+                <div class="p-4 rounded shadow-sm bg-light">
+                  <p class="font-italic mb-0"> <%= @user.about_me %></p>
+                </div>
+              </div>
+              <!-- My Bookings -->
+              <div class="px-4 py-3">
+                <div class="d-flex justify-content-start">
+                  <h5 class="mb-2">My Bookings</h5>
+                    <%= link_to trainers_path, class: 'card-remove-link' do %>
+                    <i class="fas fa-plus-square px-2"></i>
+                    <% end %>
+                </div>
+                <% @user.bookings.each do |booking| %>
+                <div class="p-4 rounded shadow-sm bg-light">
+                  <ul class="pl-0" style="list-style: none;">
+                    <li> <p class="font-weight-bold mb-2">Trainer: <%= booking.trainer.user[:first_name] %>
+                        <%= booking.trainer.user[:last_name] %></p> </li>
+                    <li> <p class="mb-2">Date: <%= booking.start_time %> </p></li>
+                    <li> <p class="mb-2">Discipline: <%= booking.trainer[:discipline] %></p></li>
+                    <li> <p class="mb-2">Trainer Level: <%= booking.trainer[:level] %></p></li>
+                    <li> <p class="mb-2">Cost: $<%= booking.trainer[:price] %></p></li>
+                      <div class="d-flex justify-content-end">
+                        <%= link_to edit_booking_path(booking.id), data: { confirm: "Are you sure?" }, class: 'card-remove-link' do %>
+                        <i class="fas fa-edit align-items-start"></i>
+                        <% end %>
+                      </div>
+                  </ul>
+                  </div>
+                  <% end %>
+                </div>
+            </div>
+
+
+          <!-- Trainer About Me -->
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <% if @user.trainer %>
+            <div class="px-4 py-3"><h5 class="mb-2">My Trainer Profile</h5>
+              <div class="p-4 rounded shadow-sm bg-dark">
+                <p class="font-italic mb-0 text-white"> They call me <%= @user.first_name %>.</p>
+                <p class="font-italic mb-0 text-white"> <%= @user.trainer.about_me %></p>
+                <p class="font-italic mb-0 text-white">
+                  Pay me $<%= @user.trainer.price %> and I'll teach you <%= @user.trainer.level %> <%= @user.trainer.discipline %>.
+                </p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% unless @user == current_user %>
+      <div class="px-4 py-3"><h5 class="mb-2">My Trainer Profile</h5>
+              <div class="p-4 rounded shadow-sm bg-dark">
+                <p class="font-italic mb-0 text-white"> They call me <%= @user.first_name %>.</p>
+                <p class="font-italic mb-0 text-white"> <%= @user.trainer.about_me %></p>
+                <p class="font-italic mb-0 text-white">
+                  Pay me $<%= @user.trainer.price %> and I'll teach you <%= @user.trainer.level %> <%= @user.trainer.discipline %>.
+                </p>
+              </div>
+            </div>
+            <% end %>
+    </div>
+  </div>
+
 </div>
