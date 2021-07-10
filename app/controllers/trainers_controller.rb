@@ -1,6 +1,10 @@
 class TrainersController < ApplicationController
-
   def index
+    if params[:query].present?
+      @trainers = Trainer.search_by_discipline_and_level(params[:query])
+    else
+      @trainers = Trainer.all
+    end
     @trainers = policy_scope(Trainer)
     # @trainers = Trainer.all
   end
