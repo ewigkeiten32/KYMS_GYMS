@@ -24,4 +24,12 @@ module ImageHelper
       image_tag "default.png", width:"130", class: "img-circle rounded mb-2 img-thumbnail"
     end
   end
+
+  def user_show_image(user)
+    if user.photo.attached?
+      cl_image_tag user.photo.key, width:130, height: 130, class: "img-responsive img-show"
+    else
+      image_tag "default.png", width:130, height: 130, class: "img-responsive img-show"
+    end
+  end
 end

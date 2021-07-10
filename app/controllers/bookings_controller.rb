@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_articles, only: [:show, :edit, :show, :destroy]
+  before_action :set_articles, only: [:show, :edit, :update, :destroy]
 
   def index
     @bookings = Booking.all
@@ -25,18 +25,24 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @booking = Booking.find(params[:id])
     @trainer = Trainer.find(@booking.trainer_id)
     authorize @booking
   end
 
   def update
-    @booking = Booking.find(params[:id])
     @booking.update(bookings_params)
     authorize @booking
 
     redirect_to user_path(current_user)
   end
+
+  def destroy
+    @booking.destroy
+    authorize @booking
+
+    redirect_to user_path(current_user)
+ end
+
 
   private
 
